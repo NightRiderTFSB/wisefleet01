@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Inicio"
+        android:id="@+id/Vehiculos"
+        android:icon="@drawable/ic_baseline_home_24"/>
+    <item android:title="Reportes de uso"
+        android:id="@+id/ReportesUso"
+        android:icon="@drawable/baseline_article_24"/>
+    <item android:title="Configuración"
+        android:id="@+id/Configuracion"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+</menu>

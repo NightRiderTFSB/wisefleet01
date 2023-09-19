@@ -2,4 +2,4 @@
 ------------
 ## al angelito también
 ------------
-# El Joel es un adicto al ano masculino
+# El tec es tranza

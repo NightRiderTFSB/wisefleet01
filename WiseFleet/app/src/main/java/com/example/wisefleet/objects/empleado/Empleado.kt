@@ -115,17 +115,17 @@ class Empleado() {
         }
     }
 
-    fun stp_lookByTelefono_empleado(empleado: Empleado): Empleado{
-        try{
+    fun stp_lookByTelefono_empleado(empleado: Empleado): Empleado {
+        try {
             val conexion = ConexionSQL().getConexion() //Obtenemos nuestro enlace a la BD
-            var lookbytelefonoStmt: CallableStatement = conexion!!.prepareCall("{CALL stp_lookByTelefono_empleado(?)}")
+            var lookbytelefonoStmt: CallableStatement =
+                conexion!!.prepareCall("{CALL stp_lookByTelefono_empleado(?)}")
             lookbytelefonoStmt.setString(1, empleado.telefono);
             lookbytelefonoStmt.execute();
             conexion.close();
 
-        }catch (e: Exception){
-            
+        } catch (e: Exception) {
         }
+        return Empleado();
     }
-
 }

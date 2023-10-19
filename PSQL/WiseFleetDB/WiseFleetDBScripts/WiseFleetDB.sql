@@ -12,7 +12,7 @@ CREATE TABLE usuario (
     idUsuario SERIAL PRIMARY KEY,
     usuario VARCHAR(25) NOT NULL UNIQUE,
     contrasena VARCHAR(25) NOT NULL,
-    permiso BOOLEAN NOT NULL,
+    permiso BOOL NOT NULL,
     idEmpleadoFK INT NOT NULL UNIQUE,
     FOREIGN KEY (idEmpleadoFK) REFERENCES empleado(idEmpleado) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -24,13 +24,13 @@ CREATE TABLE vehiculo (
     color VARCHAR(30) NOT NULL,
     placas VARCHAR(20) NOT NULL UNIQUE,
     numTarjeta VARCHAR(10) NOT NULL UNIQUE,
-    rendimientoKmsLt DOUBLE PRECISION NOT NULL,
-    disponible BOOLEAN NOT NULL
+    rendimientoKmsLt FLOAT NOT NULL,
+    disponible BOOL NOT NULL
 );
 
 CREATE TABLE estadisticas (
     idEstadistica SERIAL PRIMARY KEY,
-    celcius DOUBLE PRECISION NOT NULL,
+    celcius FLOAT NOT NULL,
     ubicacion VARCHAR(50) NOT NULL,
     bateria VARCHAR(30) NOT NULL,
     idVehiculoFK INT NOT NULL,
@@ -42,9 +42,9 @@ CREATE TABLE pedidos (
     cliente VARCHAR(50),
     telCliente VARCHAR(10),
     descripcion VARCHAR(100) NOT NULL,
-    total DOUBLE PRECISION NOT NULL,
-    entregado BOOLEAN NOT NULL,
-    cancelado BOOLEAN NOT NULL,
+    total FLOAT NOT NULL,
+    entregado BOOL NOT NULL,
+    cancelado BOOL NOT NULL,
     idEmpleadoFK INT NOT NULL,
     FOREIGN KEY (idEmpleadoFK) REFERENCES empleado(idEmpleado) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -57,3 +57,11 @@ CREATE TABLE reportes (
     FOREIGN KEY (idVehiculoFK) REFERENCES vehiculo(idVehiculo) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (idEmpleadoFK) REFERENCES empleado(idEmpleado) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+--En caso de ser necesario
+--DROP TABLE reportes;
+--DROP TABLE pedidos;
+--DROP TABLE estadisticas;
+--DROP TABLE vehiculo;
+--DROP TABLE usuario;
+--DROP TABLE empleado;

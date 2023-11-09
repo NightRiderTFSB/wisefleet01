@@ -20,9 +20,10 @@ class LoginActivity : AppCompatActivity() {
         binding.btnIniciarSesion.setOnClickListener {
             val lanzar = Intent(this, MainActivity::class.java)
             startActivity(lanzar)
+            this.finish()
         }
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+
 
     }
 }

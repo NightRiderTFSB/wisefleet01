@@ -1,10 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorCardView">#FFFFFF</color>
     <!-- Base application theme. -->
     <style name="Base.Theme.WiseFleet" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:windowTranslucentStatus">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.WiseFleet" parent="Base.Theme.WiseFleet" />

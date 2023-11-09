@@ -1,73 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="370dp"
-    android:layout_height="150dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="12dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="5dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="15dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
     >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/imgEmpleado"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@mipmap/ic_launcher" />
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:textAlignment="center"
-       android:orientation="vertical">
+    <TextView
+        android:id="@+id/txtCodigoEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/imgEmpleado"
+        android:textSize="18sp"
+        tools:text="LAOT1234431" />
 
-       <TextView
-           android:id="@+id/txtCodigoEmpleado"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           tools:text="LAOT1234431"
-           android:textAlignment="center"
-           android:layout_marginLeft="160dp"
-           android:layout_marginRight="10dp"
-           android:textSize="20sp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.5"
-           app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/txtNombreEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCodigoEmpleado"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/imgEmpleado"
+        android:textSize="18sp"
+        tools:text="Luis Antonio Ortiz Varelas" />
 
-       <TextView
-           android:id="@+id/txtNombreEmpleado"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           tools:text="Luis Antonio Ortiz Varelas"
-           android:layout_marginLeft="160dp"
-           android:layout_marginRight="10dp"
-           android:textSize="18sp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.5"
-           app:layout_constraintStart_toStartOf="parent" />
-       <TextView
-           android:id="@+id/txtRolEmpleado"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="10dp"
-           tools:text="Repartidor"
-           android:textAlignment="center"
-           android:layout_marginLeft="160dp"
-           android:layout_marginRight="10dp"
-           android:textSize="18sp"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintHorizontal_bias="0.5"
-           app:layout_constraintStart_toStartOf="parent" />
-   </LinearLayout>
+    <TextView
+        android:id="@+id/txtRolEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNombreEmpleado"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/imgEmpleado"
+        android:textSize="18sp"
+        tools:text="Repartidor" />
+</RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

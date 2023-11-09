@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.example.wisefleet.backend.apis.ApiService
 import com.example.wisefleet.backend.apis.ApiVehiculo
+import com.example.wisefleet.backend.dataobjects.Usuario
 import com.example.wisefleet.backend.dataobjects.Vehiculo
 import com.example.wisefleet.databinding.FragmentConfiguracionBinding
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class VehiculosFragment : Fragment() {
+class VehiculosFragment() : Fragment() {
 
     private lateinit var apiVehiculo: ApiVehiculo;
     private var apiService: ApiService = ApiService()
@@ -35,6 +36,7 @@ class VehiculosFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         GlobalScope.launch(Dispatchers.IO){
             try{

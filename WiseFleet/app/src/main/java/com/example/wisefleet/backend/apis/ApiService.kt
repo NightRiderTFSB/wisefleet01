@@ -43,6 +43,17 @@ class ApiService {
         return apiVehiculo
     }
 
+    suspend fun conectarApiPedidos(): ApiPedidos{
+        val baseUrl = "https://uuuoxlxemgepzswdqneq.supabase.co/rest/v1/" // Reemplaza esto con la URL base de tu API de Supabase
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiPedido = retrofit.create(ApiPedidos::class.java)
+        return apiPedido
+    }
 
 
 

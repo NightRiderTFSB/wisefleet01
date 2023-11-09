@@ -48,7 +48,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnIniciarSesion.setOnClickListener {
-
             GlobalScope.launch(Dispatchers.IO) {
                 try{
                     usuario = apiUsuario.usuarioLogin("eq."+binding.txtUsuario.text, "eq."+binding.txtContrasena.text, apiService.apiKey)
@@ -77,10 +76,9 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
         }
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+
 
     }
 }

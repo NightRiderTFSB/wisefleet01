@@ -146,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Código de empleado"
+                android:text="Número de licencia"
                 android:textStyle="bold" />
 
             <EditText
@@ -175,19 +175,6 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Rol del empleado"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtRolEmpleado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
 
         </LinearLayout>
 </ScrollView>

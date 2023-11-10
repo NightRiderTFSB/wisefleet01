@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditarPedidoActivity">
+    tools:context=".NuevoEditarPedidoActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:alpha="0.7"
-        android:text="Editar pedido"
+        android:text="Información del pedido"
         android:textSize="22sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true" />
@@ -26,7 +26,7 @@
         android:layout_marginTop="15dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnCancelar"
+            android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -56,7 +56,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/linearLayout"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
         app:cardCornerRadius="40dp"
         app:cardUseCompatPadding="true">
 <ScrollView
@@ -155,19 +154,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Estado del pedido"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtEstadoPedido"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="10dp" />
@@ -179,11 +165,12 @@
                 android:text="Repartidor a cargo del pedido"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/txtRepartidorACargo"
+            <Spinner
+                android:id="@+id/spinEmpleados"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                />
 
         </LinearLayout>
 </ScrollView>

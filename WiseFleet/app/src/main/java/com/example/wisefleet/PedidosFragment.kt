@@ -11,40 +11,47 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.math.log
+import com.example.wisefleet.backend.apis.ApiPedidos
+import com.example.wisefleet.backend.apis.ApiService
+import com.example.wisefleet.backend.dataobjects.Pedidos
+import com.example.wisefleet.backend.dataobjects.Usuario
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PedidosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class PedidosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class PedidosFragment(usuariox: Usuario) : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var usuario: Usuario = usuariox
+    private lateinit var pedidos: List<Pedidos>
+    private var apiService = ApiService()
+    private lateinit var apiPedidos: ApiPedidos;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_pedidos, container, false)
 
         val fab: FloatingActionButton? = view?.findViewById(R.id.btnAddPedido)
         fab?.setOnClickListener {
             IniciarActivity(NuevoEditarPedidoActivity())
         }
+
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                apiPedidos = apiService.conectarApiPedidos();
+                pedidos =
+                    apiPedidos.getPedidosUsuario("eq." + usuario.idempleadofk, apiService.apiKey)
+                //pedidos = apiPedidos.getPedidos(apiService.apiKey)
+                println(pedidos)
+            } catch (error: Exception) {
+                println("HA OCURRIDO UN ERROR AL CONECTAR CON LA API DE PEDIDOS")
+                error.printStackTrace()
+            }
+        }
+
         return view
     }
 
@@ -53,3 +60,4 @@ class PedidosFragment : Fragment() {
         startActivity(intent)
     }
 }
+

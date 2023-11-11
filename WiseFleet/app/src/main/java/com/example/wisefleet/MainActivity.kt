@@ -1,5 +1,10 @@
 package com.example.wisefleet
 
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import java.lang.Exception
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
@@ -10,25 +15,40 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import com.example.wisefleet.databinding.ActivityMainBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import android.app.appsearch.GlobalSearchSession
 
-class MainActivity : AppCompatActivity() {
+
+import androidx.fragment.app.Fragment
+import com.example.wisefleet.backend.apis.ApiService
+import com.example.wisefleet.backend.apis.ApiUsuario
+import com.example.wisefleet.backend.dataobjects.Usuario
+import com.example.wisefleet.databinding.ActivityMainBinding
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+class MainActivity : AppCompatActivity(){
     private var doubleBackToExitPressedOnce = false
     private lateinit var binding : ActivityMainBinding
+    private lateinit var usuario: Usuario
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        usuario = intent.getSerializableExtra("usuario") as Usuario
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(PedidosFragment())
+        replaceFragment(PedidosFragment(usuario))
+
         val colorOriginal: Int = findViewById<TextView>(R.id.btnPedidos).getCurrentTextColor()
         val btnPedidos = findViewById<TextView>(R.id.btnPedidos)
         val btnVehiculos = findViewById<TextView>(R.id.btnVehiculos)
         val btnEmpleados = findViewById<TextView>(R.id.btnEmpleados)
+
         btnPedidos.setTextColor(ContextCompat.getColor(this, R.color.Primary))
         btnPedidos.setTypeface(null, Typeface.BOLD)
+
+
+
+
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
@@ -36,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     btnVehiculos.visibility = View.VISIBLE
                     btnPedidos.visibility = View.VISIBLE
                     btnEmpleados.visibility = View.VISIBLE
-                    replaceFragment(PedidosFragment())
+                    replaceFragment(PedidosFragment(usuario))
 
                     btnPedidos.setTextColor(ContextCompat.getColor(this, R.color.Primary))
                     btnPedidos.setTypeface(null, Typeface.BOLD)
@@ -70,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         val fragmentVehiculos = findViewById<TextView>(R.id.btnVehiculos)
         fragmentVehiculos.setOnClickListener {
             replaceFragment(VehiculosFragment())
-
             btnPedidos.setTextColor(colorOriginal)
             btnPedidos.setTypeface(null, Typeface.NORMAL)
             btnEmpleados.setTextColor(colorOriginal)
@@ -82,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
         val fragmentPedidos = findViewById<TextView>(R.id.btnPedidos)
         fragmentPedidos.setOnClickListener {
-            replaceFragment(PedidosFragment())
+            replaceFragment(PedidosFragment(usuario))
 
             btnPedidos.setTextColor(ContextCompat.getColor(this, R.color.Primary))
             btnPedidos.setTypeface(null, Typeface.BOLD)
@@ -121,6 +140,14 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             doubleBackToExitPressedOnce = false
         }, 2000) // 2000 milisegundos (2 segundos) para presionar nuevamente y salir
+
+        if(usuario.permiso){
+            Toast.makeText(this@MainActivity, "ERES ADMIN Y TU ID: " + usuario.idusuario, Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this@MainActivity, "NO ERES ADMIN", Toast.LENGTH_LONG).show()
+        }
+
+
     }
 
     private fun replaceFragment(fragment : Fragment){

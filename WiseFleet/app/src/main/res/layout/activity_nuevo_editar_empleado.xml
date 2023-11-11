@@ -6,17 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".NuevoEditarEmpleadoActivity">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:paddingTop="15dp"
+        android:src="@drawable/logo_horizontal">
+
+    </ImageView>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:alpha="0.7"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.7"
         android:text="Información del empleado"
         android:textSize="22sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,129 +67,113 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_viewIcon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginTop="15dp"
-        app:cardCornerRadius="30dp"
-        android:layout_centerHorizontal="true"
-        >
-        <ImageView
-            android:layout_width="116dp"
-            android:layout_height="117dp"
-            android:src="@drawable/baseline_account_circle_24" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/card_viewIcon"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="40dp"
         app:cardUseCompatPadding="true">
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
 
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="30dp"
-            >
+            android:layout_height="wrap_content">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Nombre"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="30dp">
 
-            <EditText
-                android:id="@+id/txtNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:text="Nombre"
+                    android:textStyle="bold" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+                <EditText
+                    android:id="@+id/txtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textLongMessage" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Apellido paterno"
-                android:textStyle="bold" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
 
-            <EditText
-                android:id="@+id/txtApellidoPaterno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:text="Apellido paterno"
+                    android:textStyle="bold" />
 
-                android:inputType="textLongMessage" />
+                <EditText
+                    android:id="@+id/txtApellidoPaterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+                    android:inputType="textLongMessage" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Apellido Materno"
-                android:textStyle="bold" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
 
-            <EditText
-                android:id="@+id/txtApellidoMaterno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:text="Apellido Materno"
+                    android:textStyle="bold" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+                <EditText
+                    android:id="@+id/txtApellidoMaterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textLongMessage" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Número de licencia"
-                android:textStyle="bold" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
 
-            <EditText
-                android:id="@+id/txtCodigoEmpleado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:text="Número de licencia"
+                    android:textStyle="bold" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+                <EditText
+                    android:id="@+id/txtCodigoEmpleado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textLongMessage" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Teléfono"
-                android:textStyle="bold" />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
 
-            <EditText
-                android:id="@+id/txtTelefono"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:text="Teléfono"
+                    android:textStyle="bold" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
+                <EditText
+                    android:id="@+id/txtTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textLongMessage" />
 
-        </LinearLayout>
-</ScrollView>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp" />
+
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 

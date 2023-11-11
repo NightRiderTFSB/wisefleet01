@@ -9,9 +9,9 @@ import com.example.wisefleet.R
 
 class PedidosAdapter: RecyclerView.Adapter<PedidosAdapter.ViewHolder>(){
 
-    val clientes = arrayOf("juan", "pedo", "anna")
-    val descripcion = arrayOf("pizza", "hamburguesa", "tacos")
-    val total = arrayOf("200", "60", "180")
+    val clientes = arrayOf("juan", "pedro", "anna", "pija")
+    val descripcion = arrayOf("pizza", "hamburguesa", "tacos", "papas")
+    val total = arrayOf("200", "60", "180", "50")
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_pedidos, viewGroup, false)
@@ -35,8 +35,8 @@ class PedidosAdapter: RecyclerView.Adapter<PedidosAdapter.ViewHolder>(){
 
         init {
             cliente = itemView.findViewById(R.id.txtANombreDe)
-            descripcion = itemView.findViewById(R.id.txtANombreDe)
-            total = itemView.findViewById(R.id.txtANombreDe)
+            descripcion = itemView.findViewById(R.id.txtDescripcion)
+            total = itemView.findViewById(R.id.txtTotal)
         }
 
     }

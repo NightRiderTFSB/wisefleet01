@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity(){
         usuario = intent.getSerializableExtra("usuario") as Usuario
 
         //replaceFragment(PedidosFragment(usuario))
-        replaceFragment(VehiculosFragment())
+        //replaceFragment(VehiculosFragment())
+        replaceFragment(ReportesUsoFragment())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
 

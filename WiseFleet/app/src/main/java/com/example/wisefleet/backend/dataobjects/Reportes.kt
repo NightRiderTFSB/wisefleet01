@@ -1,6 +1,6 @@
 package com.example.wisefleet.backend.dataobjects
 
-data class reportes(
+data class Reportes(
     var idreporte: Int?,
     var descripcion: String,
     var idvehiculofk: Int,

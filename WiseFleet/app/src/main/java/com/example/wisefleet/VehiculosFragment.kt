@@ -9,6 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
+import com.example.wisefleet.backend.RecyclerViews.VehiculosAdapter
 import com.example.wisefleet.backend.apis.ApiService
 import com.example.wisefleet.backend.apis.ApiVehiculo
 import com.example.wisefleet.backend.dataobjects.Usuario
@@ -57,6 +61,11 @@ class VehiculosFragment() : Fragment() {
                 error.printStackTrace()
             }
         }
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerVehiculos)
+        val adapter = VehiculosAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
 
         return view
     }

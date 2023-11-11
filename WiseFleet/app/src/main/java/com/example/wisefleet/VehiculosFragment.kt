@@ -1,5 +1,6 @@
 package com.example.wisefleet
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings.Global
@@ -13,6 +14,9 @@ import com.example.wisefleet.backend.apis.ApiVehiculo
 import com.example.wisefleet.backend.dataobjects.Usuario
 import com.example.wisefleet.backend.dataobjects.Vehiculo
 import com.example.wisefleet.databinding.FragmentConfiguracionBinding
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -36,21 +40,30 @@ class VehiculosFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_vehiculos, container, false)
 
+        val fab: FloatingActionButton? = view?.findViewById(R.id.btnAddVehiculo)
+        fab?.setOnClickListener {
+            IniciarActivity(NuevoEditarVehiculoActivity())
+        }
 
         GlobalScope.launch(Dispatchers.IO){
             try{
                 apiVehiculo = apiService.conectarApiVehiculo()
                 vehiculos = apiVehiculo.getVehiculos(apiService.apiKey)
-                println(vehiculos) 
+                println(vehiculos)
             }catch (error: Exception){
                 println("ERROR EN LA API VEHICULOS")
                 error.printStackTrace()
             }
         }
 
+        return view
+    }
 
-        return inflater.inflate(R.layout.fragment_vehiculos, container, false)
+    fun IniciarActivity(activity: Activity) {
+        val intent = Intent(this.activity, activity::class.java)
+        startActivity(intent)
     }
 
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditarVehiculoActivity">
+    tools:context=".NuevoEditarEmpleadoActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -12,21 +12,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:alpha="0.7"
-        android:text="Editar vehículo"
+        android:layout_centerHorizontal="true"
+        android:text="Información del empleado"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
-        android:layout_marginTop="15dp"
-       android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnCancelar"
+            android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -34,20 +35,22 @@
             android:layout_marginBottom="10dp"
             android:src="@drawable/baseline_close_24"
             app:backgroundTint="#6FC3CE"
+
             app:tint="@android:color/white"
-             />
+            tools:layout_editor_absoluteX="92dp"
+            tools:layout_editor_absoluteY="80dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnGuardarVehiculo"
+            android:id="@+id/btnGuardarEmpleado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/done_icon"
+            android:src="@drawable/baseline_done_24"
             app:backgroundTint="#6FC3CE"
             app:tint="@android:color/white"
-             />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
+
 
     </LinearLayout>
 
@@ -58,12 +61,12 @@
         android:layout_below="@+id/linearLayout"
         android:layout_marginTop="15dp"
         app:cardCornerRadius="30dp"
-        android:layout_centerHorizontal="true">
-
+        android:layout_centerHorizontal="true"
+        >
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/baseline_image_24" />
+            android:layout_width="116dp"
+            android:layout_height="117dp"
+            android:src="@drawable/baseline_account_circle_24" />
 
     </androidx.cardview.widget.CardView>
 
@@ -72,9 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/card_viewIcon"
-        android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
         app:cardCornerRadius="40dp"
         app:cardUseCompatPadding="true">
 <ScrollView
@@ -86,17 +87,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-           android:padding="30dp">
+            android:padding="30dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Modelo"
+                android:text="Nombre"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtModelo"
+                android:id="@+id/txtNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textLongMessage" />
@@ -109,11 +111,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Año"
+                android:text="Apellido paterno"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtAño"
+                android:id="@+id/txtApellidoPaterno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:inputType="textLongMessage" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Apellido Materno"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtApellidoMaterno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textLongMessage" />
@@ -126,11 +146,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Color"
+                android:text="Número de licencia"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtColor"
+                android:id="@+id/txtCodigoEmpleado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textLongMessage" />
@@ -143,45 +163,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
-                android:text="Matrícula"
+                android:text="Teléfono"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txtMatricula"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="No. Tarjeta"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtNoTarjeta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Kilómetros por litro de gasolina"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtKmGasolina"
+                android:id="@+id/txtTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textLongMessage" />
@@ -192,6 +178,8 @@
 
         </LinearLayout>
 </ScrollView>
+
     </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

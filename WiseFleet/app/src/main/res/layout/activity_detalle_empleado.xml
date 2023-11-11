@@ -211,7 +211,7 @@
         <ImageView
             android:layout_width="116dp"
             android:layout_height="117dp"
-            android:src="@drawable/baseline_image_24" />
+            android:src="@drawable/baseline_account_circle_24" />
 
     </androidx.cardview.widget.CardView>
 

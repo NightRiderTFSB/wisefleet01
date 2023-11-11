@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Inicio"
-        android:id="@+id/Vehiculos"
+        android:id="@+id/Pedidos"
         android:icon="@drawable/ic_baseline_home_24"/>
     <item android:title="Reportes de uso"
         android:id="@+id/ReportesUso"

@@ -61,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
                             val lanzar = Intent(this@LoginActivity, MainActivity::class.java)
                             lanzar.putExtra("usuario", usuario[0])
                             startActivity(lanzar)
+                            finish()
                         }else{
                             println("Malvenido")
                             Toast.makeText(this@LoginActivity, "Revisa tus credenciales", Toast.LENGTH_LONG).show()

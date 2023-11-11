@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity(){
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         usuario = intent.getSerializableExtra("usuario") as Usuario
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -43,19 +45,21 @@ class MainActivity : AppCompatActivity(){
         val btnVehiculos = findViewById<TextView>(R.id.btnVehiculos)
         val btnEmpleados = findViewById<TextView>(R.id.btnEmpleados)
 
+        //cambia el color del botón de pedidos al iniciar el activity (color azul en negritas)
         btnPedidos.setTextColor(ContextCompat.getColor(this, R.color.Primary))
         btnPedidos.setTypeface(null, Typeface.BOLD)
 
 
 
 
-
+        //Eventos de barra de navegación inferior (Inicio, Reportes de uso y configuración)
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.Pedidos -> {
                     btnVehiculos.visibility = View.VISIBLE
                     btnPedidos.visibility = View.VISIBLE
                     btnEmpleados.visibility = View.VISIBLE
+                    usuario = intent.getSerializableExtra("usuario") as Usuario
                     replaceFragment(PedidosFragment(usuario))
 
                     btnPedidos.setTextColor(ContextCompat.getColor(this, R.color.Primary))
@@ -87,6 +91,7 @@ class MainActivity : AppCompatActivity(){
             true
         }
 
+        //evento para mostrar el fragment vehículos y cambiar el estado del TextView de la parte superior
         val fragmentVehiculos = findViewById<TextView>(R.id.btnVehiculos)
         fragmentVehiculos.setOnClickListener {
             replaceFragment(VehiculosFragment())
@@ -99,6 +104,7 @@ class MainActivity : AppCompatActivity(){
             btnVehiculos.setTypeface(null, Typeface.BOLD)
         }
 
+        //evento para mostrar el fragment pedidos y cambiar el estado del TextView de la parte superior
         val fragmentPedidos = findViewById<TextView>(R.id.btnPedidos)
         fragmentPedidos.setOnClickListener {
             replaceFragment(PedidosFragment(usuario))
@@ -113,6 +119,7 @@ class MainActivity : AppCompatActivity(){
             btnVehiculos.setTypeface(null, Typeface.NORMAL)
         }
 
+        //evento para mostrar el fragment empleados y cambiar el estado del TextView de la parte superior
         val fragmentEmpleados = findViewById<TextView>(R.id.btnEmpleados)
         fragmentEmpleados.setOnClickListener {
             replaceFragment(EmpleadosFragment())
@@ -126,30 +133,32 @@ class MainActivity : AppCompatActivity(){
             btnVehiculos.setTextColor(colorOriginal)
             btnVehiculos.setTypeface(null, Typeface.NORMAL)
         }
-    }
-
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Presiona nuevamente para salir", Toast.LENGTH_SHORT).show()
-
-        Handler().postDelayed({
-            doubleBackToExitPressedOnce = false
-        }, 2000) // 2000 milisegundos (2 segundos) para presionar nuevamente y salir
 
         if(usuario.permiso){
             Toast.makeText(this@MainActivity, "ERES ADMIN Y TU ID: " + usuario.idusuario, Toast.LENGTH_LONG).show()
         }else{
             Toast.makeText(this@MainActivity, "NO ERES ADMIN", Toast.LENGTH_LONG).show()
         }
+    }
+
+    //Funcion para salir de la aplicación con 2 toques de confirmación
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        Handler().postDelayed({
+            doubleBackToExitPressedOnce = false
+        }, 2000)
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Presiona nuevamente para salir", Toast.LENGTH_SHORT).show()
 
 
     }
 
+
+    //Función para reemplazar fragments
     private fun replaceFragment(fragment : Fragment){
 
         val fragmentManager = supportFragmentManager

@@ -8,7 +8,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.math.log
 import com.example.wisefleet.backend.apis.ApiPedidos
@@ -31,7 +36,6 @@ class PedidosFragment(usuariox: Usuario) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_pedidos, container, false)
 
         val fab: FloatingActionButton? = view?.findViewById(R.id.btnAddPedido)
@@ -51,6 +55,12 @@ class PedidosFragment(usuariox: Usuario) : Fragment() {
                 error.printStackTrace()
             }
         }
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerPedidos)
+        val adapter = PedidosAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
+
 
         return view
     }

@@ -20,7 +20,7 @@
 
 
         <TextView
-            android:id="@+id/txtNombrePedido"
+            android:id="@+id/txtANombreDe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -30,26 +30,26 @@
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Pizza jumbo" />
+            tools:text="Pedido de juan Olmos" />
 
         <TextView
-            android:id="@+id/txtDireccionPedido"
+            android:id="@+id/txtDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtNombrePedido"
+            android:layout_below="@+id/txtANombreDe"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:textSize="18sp"
-            tools:text="José Herrera 404, Santa Rita." />
+            tools:text="Pizza jumbo de triple carne." />
 
         <TextView
-            android:id="@+id/txtTotalPedido"
+            android:id="@+id/txtTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDireccionPedido"
+            android:layout_below="@+id/txtDescripcion"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"

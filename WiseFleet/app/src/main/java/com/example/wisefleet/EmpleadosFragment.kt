@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.wisefleet.backend.RecyclerViews.EmpleadosAdapter
+import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,6 +46,12 @@ class EmpleadosFragment : Fragment() {
         fab?.setOnClickListener {
             IniciarActivity(NuevoEditarEmpleadoActivity())
         }
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerEmpleados)
+        val adapter = EmpleadosAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
+
         return view
     }
 

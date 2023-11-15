@@ -18,12 +18,15 @@ import com.example.wisefleet.backend.apis.ApiVehiculo
 import com.example.wisefleet.backend.dataobjects.Usuario
 import com.example.wisefleet.backend.dataobjects.Vehiculo
 import com.example.wisefleet.databinding.FragmentConfiguracionBinding
+import com.example.wisefleet.databinding.FragmentEmpleadosBinding
+import com.example.wisefleet.databinding.FragmentVehiculosBinding
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class VehiculosFragment() : Fragment() {
@@ -32,8 +35,8 @@ class VehiculosFragment() : Fragment() {
     private var apiService: ApiService = ApiService()
     private var vehiculos: List<Vehiculo> = listOf()
 
-    private var _binding: FragmentConfiguracionBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentVehiculosBinding;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,10 +47,11 @@ class VehiculosFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_vehiculos, container, false)
+        binding = FragmentVehiculosBinding.inflate(layoutInflater)
+        val view = binding.root
 
-        val fab: FloatingActionButton? = view?.findViewById(R.id.btnAddVehiculo)
-        fab?.setOnClickListener {
+        var fabs: FloatingActionButton? = binding.btnAddVehiculo
+        fabs?.setOnClickListener {
             IniciarActivity(NuevoEditarVehiculoActivity())
         }
 
@@ -56,16 +60,21 @@ class VehiculosFragment() : Fragment() {
                 apiVehiculo = apiService.conectarApiVehiculo()
                 vehiculos = apiVehiculo.getVehiculos(apiService.apiKey)
                 println(vehiculos)
+
+                withContext(Dispatchers.Main) {
+                    // Ahora estás en el hilo principal
+                    println("VEHICULOS: " + vehiculos[0].modelo)
+                    val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerVehiculos)
+                    val adapter = VehiculosAdapter(vehiculos)
+                    recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+                    recyclerView?.adapter = adapter
+                }
+
             }catch (error: Exception){
                 println("ERROR EN LA API VEHICULOS")
                 error.printStackTrace()
             }
         }
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerVehiculos)
-        val adapter = VehiculosAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
 
         return view
     }

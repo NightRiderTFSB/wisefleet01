@@ -1,8 +1,11 @@
-package com.example.wisefleet.backend.apis
+package com .example.wisefleet.backend.apis
 
 import com.example.wisefleet.backend.dataobjects.Empleado
+import com.example.wisefleet.backend.dataobjects.Vehiculo
 
 import kotlinx.coroutines.*
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiEmpleado {

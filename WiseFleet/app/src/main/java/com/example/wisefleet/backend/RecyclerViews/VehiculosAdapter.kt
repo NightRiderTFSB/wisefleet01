@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wisefleet.R
+import com.example.wisefleet.backend.dataobjects.Vehiculo
 
-class VehiculosAdapter: RecyclerView.Adapter<VehiculosAdapter.ViewHolder>() {
+class VehiculosAdapter(vehiculox: List<Vehiculo>): RecyclerView.Adapter<VehiculosAdapter.ViewHolder>() {
+
+    var vehiculos: List<Vehiculo> = vehiculox
 
     val modelos = arrayOf("Honda Wave", "Ducati F1", "Italika F150", "Honda H1")
     val disponibilidad = arrayOf("pizza", "hamburguesa", "tacos", "papas")
@@ -29,12 +32,12 @@ class VehiculosAdapter: RecyclerView.Adapter<VehiculosAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: VehiculosAdapter.ViewHolder, position: Int) {
-        viewHolder.modelo.text =modelos[position]
-        viewHolder.disponible.text = disponibilidad[position]
+        viewHolder.modelo.text = vehiculos[position].modelo
+        viewHolder.disponible.text = if (vehiculos[position].disponible) "Disponible" else "No disponible"
     }
 
     override fun getItemCount(): Int {
-        return modelos.size
+        return vehiculos.size
     }
 
 }

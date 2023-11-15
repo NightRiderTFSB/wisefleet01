@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wisefleet.R
+import com.example.wisefleet.backend.dataobjects.Empleado
 
-class EmpleadosAdapter: RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
+class EmpleadosAdapter(empleadox: List<Empleado>): RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
+
+    var empleados = empleadox
 
     val numLicencias = arrayOf("3323", "32424", "324234", "34242")
     val nombres = arrayOf("Juan", "Luis Antonio", "El Joel", "El Cristal")
@@ -19,9 +22,9 @@ class EmpleadosAdapter: RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: EmpleadosAdapter.ViewHolder, position: Int) {
-        viewHolder.numLicencia.text =numLicencias[position]
-        viewHolder.nombre.text = nombres[position]
-        viewHolder.telefono.text = telefonos[position]
+        viewHolder.numLicencia.text = empleados[position].numleciencia
+        viewHolder.nombre.text = empleados[position].nombre
+        viewHolder.telefono.text = empleados[position].telefono
     }
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var numLicencia: TextView
@@ -37,6 +40,6 @@ class EmpleadosAdapter: RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return nombres.size
+        return empleados.size
     }
 }

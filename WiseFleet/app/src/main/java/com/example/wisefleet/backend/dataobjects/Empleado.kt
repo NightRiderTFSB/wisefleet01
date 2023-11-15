@@ -9,6 +9,5 @@ data class Empleado(
 ) {
     constructor(nombre: String, apellidop: String, apellidom: String, numleciencia: String, telefono: String):
             this(null, nombre, apellidop, apellidom, numleciencia, telefono){
-
     }
 }

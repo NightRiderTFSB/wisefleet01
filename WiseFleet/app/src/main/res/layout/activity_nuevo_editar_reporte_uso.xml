@@ -94,11 +94,13 @@
                 android:text="Modelo del vehículo usado"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/txtModelo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+           <Spinner
+               android:id="@+id/spinModelos"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp">
+
+           </Spinner>
 
             <View
                 android:layout_width="wrap_content"
@@ -117,91 +119,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="textLongMessage" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Kilometros recorridos"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtkmRecorridos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Capacidad máxima de combustible"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtCapacidadMaxCombustible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Combustible consumido"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtCombustibleConsumido"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Kilómetros por litro de gasolina"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtKmGasolina"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Coordenadas"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txtCoordenadas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -209,11 +126,13 @@
                 android:text="Repartidor a cargo del vehículo"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/txtRepartidorACargo"
+            <Spinner
+                android:id="@+id/listEmpleados"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textLongMessage" />
+                android:layout_marginTop="10dp">
+
+            </Spinner>
 
         </LinearLayout>
 </ScrollView>

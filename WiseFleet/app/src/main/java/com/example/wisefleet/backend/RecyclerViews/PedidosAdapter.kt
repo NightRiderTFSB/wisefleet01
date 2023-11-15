@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wisefleet.R
 
 class PedidosAdapter: RecyclerView.Adapter<PedidosAdapter.ViewHolder>(){
-
+    var onItemClickListener: OnItemClickListener? = null
     val clientes = arrayOf("juan", "pedro", "anna", "pija")
     val descripcion = arrayOf("pizza", "hamburguesa", "tacos", "papas")
     val total = arrayOf("200", "60", "180", "50")
@@ -22,6 +22,10 @@ class PedidosAdapter: RecyclerView.Adapter<PedidosAdapter.ViewHolder>(){
         viewHolder.cliente.text =clientes[position]
         viewHolder.descripcion.text = descripcion[position]
         viewHolder.total.text = total[position]
+
+        viewHolder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -39,5 +43,9 @@ class PedidosAdapter: RecyclerView.Adapter<PedidosAdapter.ViewHolder>(){
             total = itemView.findViewById(R.id.txtTotal)
         }
 
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }

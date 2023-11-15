@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginVertical="20dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp"
     app:cardCornerRadius="15dp"
     app:cardElevation="10dp"
     >
@@ -18,9 +18,8 @@
         android:paddingBottom="10dp"
         >
 
-
         <TextView
-            android:id="@+id/txtNombrePedido"
+            android:id="@+id/txtModelo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -34,10 +33,10 @@
             tools:text="Honda Wave 100" />
 
         <TextView
-            android:id="@+id/txtDireccionPedido"
+            android:id="@+id/txtDescripcionUso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtNombrePedido"
+            android:layout_below="@+id/txtModelo"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
@@ -48,29 +47,6 @@
             android:paddingRight="10dp"
             android:textSize="20sp"
             tools:text="Embrague se volvió duro" />
-
-        <TextView
-            android:id="@+id/txtTotalPedido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtDireccionPedido"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="43 kms recorridos" />
     </RelativeLayout>
-
-
-
 
 </androidx.cardview.widget.CardView>

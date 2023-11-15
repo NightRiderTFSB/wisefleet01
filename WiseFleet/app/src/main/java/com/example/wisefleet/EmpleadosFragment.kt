@@ -10,30 +10,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wisefleet.backend.RecyclerViews.EmpleadosAdapter
-import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EmpleadosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EmpleadosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -51,6 +31,14 @@ class EmpleadosFragment : Fragment() {
         val adapter = EmpleadosAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
+
+        // Inicializa el activiy para vizualizar los detalles del item seleccionado del recyclerView
+        adapter.onItemClickListener = object : EmpleadosAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val intent = Intent(requireContext(), DetalleEmpleadoActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         return view
     }

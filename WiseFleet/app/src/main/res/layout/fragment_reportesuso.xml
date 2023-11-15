@@ -28,7 +28,7 @@
         android:text="Reportes de uso" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPedidos"
+        android:id="@+id/recyclerReportesUso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"

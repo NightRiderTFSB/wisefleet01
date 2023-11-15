@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wisefleet.R
 
 class VehiculosAdapter: RecyclerView.Adapter<VehiculosAdapter.ViewHolder>() {
-
+    var onItemClickListener: OnItemClickListener? = null
     val modelos = arrayOf("Honda Wave", "Ducati F1", "Italika F150", "Honda H1")
     val disponibilidad = arrayOf("pizza", "hamburguesa", "tacos", "papas")
 
@@ -31,10 +31,16 @@ class VehiculosAdapter: RecyclerView.Adapter<VehiculosAdapter.ViewHolder>() {
     override fun onBindViewHolder(viewHolder: VehiculosAdapter.ViewHolder, position: Int) {
         viewHolder.modelo.text =modelos[position]
         viewHolder.disponible.text = disponibilidad[position]
+
+        viewHolder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return modelos.size
     }
-
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 }

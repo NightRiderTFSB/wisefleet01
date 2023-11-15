@@ -64,7 +64,7 @@
         android:layout_marginTop="15dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerPedidos"
+            android:id="@+id/recyclerEstadisticas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

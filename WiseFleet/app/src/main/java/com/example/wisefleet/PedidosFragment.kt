@@ -26,7 +26,6 @@ import kotlinx.coroutines.launch
 
 
 class PedidosFragment(usuariox: Usuario) : Fragment() {
-
     private var usuario: Usuario = usuariox
     private lateinit var pedidos: List<Pedidos>
     private var apiService = ApiService()
@@ -38,6 +37,7 @@ class PedidosFragment(usuariox: Usuario) : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_pedidos, container, false)
 
+        //Evento para iniciar el activity para añadir un nuevo pedido
         val fab: FloatingActionButton? = view?.findViewById(R.id.btnAddPedido)
         fab?.setOnClickListener {
             IniciarActivity(NuevoEditarPedidoActivity())
@@ -56,11 +56,19 @@ class PedidosFragment(usuariox: Usuario) : Fragment() {
             }
         }
 
+        //Carga de los items del recycler view desde el adapter
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerPedidos)
         val adapter = PedidosAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 
+        // Inicializa el activiy para vizualizar los detalles del item seleccionado del recyclerView
+        adapter.onItemClickListener = object : PedidosAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val intent = Intent(requireContext(), DetallePedidoActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         return view
     }

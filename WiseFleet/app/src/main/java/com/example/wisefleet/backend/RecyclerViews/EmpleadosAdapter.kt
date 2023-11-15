@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wisefleet.R
 
 class EmpleadosAdapter: RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
-
+    var onItemClickListener: OnItemClickListener? = null
     val numLicencias = arrayOf("3323", "32424", "324234", "34242")
     val nombres = arrayOf("Juan", "Luis Antonio", "El Joel", "El Cristal")
     val telefonos = arrayOf("3953293493", "3500402305", "2053020503", "0243503405")
@@ -22,6 +22,10 @@ class EmpleadosAdapter: RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
         viewHolder.numLicencia.text =numLicencias[position]
         viewHolder.nombre.text = nombres[position]
         viewHolder.telefono.text = telefonos[position]
+
+        viewHolder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(position)
+        }
     }
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         var numLicencia: TextView
@@ -38,5 +42,9 @@ class EmpleadosAdapter: RecyclerView.Adapter<EmpleadosAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return nombres.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }

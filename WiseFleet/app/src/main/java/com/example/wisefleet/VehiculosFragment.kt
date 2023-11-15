@@ -8,14 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
 import com.example.wisefleet.backend.RecyclerViews.VehiculosAdapter
 import com.example.wisefleet.backend.apis.ApiService
 import com.example.wisefleet.backend.apis.ApiVehiculo
-import com.example.wisefleet.backend.dataobjects.Usuario
 import com.example.wisefleet.backend.dataobjects.Vehiculo
 import com.example.wisefleet.databinding.FragmentConfiguracionBinding
 
@@ -27,11 +24,9 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class VehiculosFragment() : Fragment() {
-
     private lateinit var apiVehiculo: ApiVehiculo;
     private var apiService: ApiService = ApiService()
     private var vehiculos: List<Vehiculo> = listOf()
-
     private var _binding: FragmentConfiguracionBinding? = null
     private val binding get() = _binding!!
 
@@ -66,6 +61,14 @@ class VehiculosFragment() : Fragment() {
         val adapter = VehiculosAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
+
+        // Inicializa el activiy para vizualizar los detalles del item seleccionado del recyclerView
+        adapter.onItemClickListener = object : VehiculosAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val intent = Intent(requireContext(), EstadisticasActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         return view
     }

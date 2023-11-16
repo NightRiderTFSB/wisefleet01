@@ -9,7 +9,7 @@ import com.example.wisefleet.R
 import com.example.wisefleet.backend.dataobjects.Vehiculo
 
 class VehiculosAdapter(vehiculox: List<Vehiculo>): RecyclerView.Adapter<VehiculosAdapter.ViewHolder>() {
-
+    var onItemClickListener: OnItemClickListener? = null
     var vehiculos: List<Vehiculo> = vehiculox
 
     val modelos = arrayOf("Honda Wave", "Ducati F1", "Italika F150", "Honda H1")
@@ -34,10 +34,17 @@ class VehiculosAdapter(vehiculox: List<Vehiculo>): RecyclerView.Adapter<Vehiculo
     override fun onBindViewHolder(viewHolder: VehiculosAdapter.ViewHolder, position: Int) {
         viewHolder.modelo.text = vehiculos[position].modelo
         viewHolder.disponible.text = if (vehiculos[position].disponible) "Disponible" else "No disponible"
+
+        viewHolder.itemView.setOnClickListener {
+            onItemClickListener?.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return vehiculos.size
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 }

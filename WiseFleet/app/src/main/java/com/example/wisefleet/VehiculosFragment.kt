@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wisefleet.backend.RecyclerViews.EmpleadosAdapter
 import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
 import com.example.wisefleet.backend.RecyclerViews.VehiculosAdapter
 import com.example.wisefleet.backend.apis.ApiService
@@ -68,6 +69,13 @@ class VehiculosFragment() : Fragment() {
                     val adapter = VehiculosAdapter(vehiculos)
                     recyclerView?.layoutManager = LinearLayoutManager(requireContext())
                     recyclerView?.adapter = adapter
+
+                    adapter.onItemClickListener = object : VehiculosAdapter.OnItemClickListener {
+                        override fun onItemClick(position: Int) {
+                            val intent = Intent(requireContext(), EstadisticasActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
                 }
 
             }catch (error: Exception){
@@ -75,6 +83,8 @@ class VehiculosFragment() : Fragment() {
                 error.printStackTrace()
             }
         }
+
+
 
         return view
     }

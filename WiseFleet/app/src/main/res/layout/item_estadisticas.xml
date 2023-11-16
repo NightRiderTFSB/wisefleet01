@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginHorizontal="20dp"
-    android:layout_marginVertical="15dp"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp"
     app:cardCornerRadius="15dp"
     app:cardElevation="10dp"
     >
@@ -17,48 +17,41 @@
         >
 
         <TextView
-            android:id="@+id/txtFecha"
+            android:id="@+id/txtLongitud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            tools:text="Longitud: 2.17403" />
+
+        <TextView
+            android:id="@+id/txtLatitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtLongitud"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="20sp"
-            tools:text="Fecha: 23/03/2023" />
+            tools:text="Latitud: 41.40338" />
 
         <TextView
             android:id="@+id/txtTemperatura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtFecha"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textSize="20sp"
-            tools:text="Temperatura: 105°" />
-
-        <TextView
-            android:id="@+id/txtLongitud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtTemperatura"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtLatitud"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="20sp"
-            tools:text="Longitud: 41.40338, 2.17403" />
-
-        <TextView
-            android:id="@+id/txtBateria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLongitud"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textSize="20dp"
-            tools:text="Batería: 83%" />
+            android:layout_marginBottom="10dp"
+            tools:text="Temperatura: 145°" />
 
     </RelativeLayout>
 

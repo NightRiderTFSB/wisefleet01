@@ -5,5 +5,7 @@ import retrofit2.http.*
 interface ApiDatos {
 
     @GET("datos")
-    suspend fun getDatos(): List<Datos>
+    suspend fun getDatos(@Header("apikey") apiKey: String): List<Datos>
+
+
 }

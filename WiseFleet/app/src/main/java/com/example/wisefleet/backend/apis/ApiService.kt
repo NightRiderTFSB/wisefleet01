@@ -67,6 +67,17 @@ class ApiService {
         return apiReportes
     }
 
+    suspend fun conectarApiDatos(): ApiDatos{
+        val baseUrl = "https://uuuoxlxemgepzswdqneq.supabase.co/rest/v1/" // Reemplaza esto con la URL base de tu API de Supabase
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiDatos = retrofit.create(ApiDatos::class.java)
+        return apiDatos
+    }
 
 
 }

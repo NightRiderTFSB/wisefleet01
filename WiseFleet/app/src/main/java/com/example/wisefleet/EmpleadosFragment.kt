@@ -1,59 +1,82 @@
 package com.example.wisefleet
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings.Global
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.wisefleet.backend.RecyclerViews.EmpleadosAdapter
+import com.example.wisefleet.backend.RecyclerViews.PedidosAdapter
+import com.example.wisefleet.backend.apis.ApiEmpleado
+import com.example.wisefleet.backend.apis.ApiService
+import com.example.wisefleet.backend.dataobjects.Empleado
+import com.example.wisefleet.databinding.FragmentEmpleadosBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EmpleadosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EmpleadosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var apiEmpleado: ApiEmpleado
+    private var apiService: ApiService = ApiService()
+    private var empleados: List<Empleado> = mutableListOf()
+    private lateinit var binding: FragmentEmpleadosBinding;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_empleados, container, false)
+
+        binding = FragmentEmpleadosBinding.inflate(layoutInflater)
+        val view = binding.root
+
+        var fabs: FloatingActionButton? = binding.btnAddEmpleado
+        fabs?.setOnClickListener {
+            IniciarActivity(NuevoEditarEmpleadoActivity())
+        }
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                // Verificar si el fragmento está adjunto a la actividad
+                if (isAdded) {
+                    apiEmpleado = apiService.conectarApiEmpleado()
+                    empleados = apiEmpleado.getEmpleados(apiService.apiKey)
+                    println(empleados)
+
+                    withContext(Dispatchers.Main) {
+                        // Verificar nuevamente si el fragmento está adjunto a la actividad
+                        if (isAdded) {
+                            val recyclerView = binding.recyclerEmpleados
+                            val adapter = EmpleadosAdapter(empleados)
+                            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                            recyclerView.adapter = adapter
+                        }
+                    }
+                }
+
+            } catch (error: Exception) {
+                println("ERROR EN LA API EMPLEADOS")
+                error.printStackTrace()
+            }
+        }
+
+
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EmpleadosFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EmpleadosFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun IniciarActivity(activity: Activity) {
+        val intent = Intent(this.activity, activity::class.java)
+        startActivity(intent)
     }
 }

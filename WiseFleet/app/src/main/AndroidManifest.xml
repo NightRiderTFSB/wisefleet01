@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,48 +13,48 @@
         tools:targetApi="31">
         <activity
             android:name=".DetalleReporteUsoActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".EditarReporteUsoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NuevoReporteUsoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditarEmpleadoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NuevoEmpleadoActivity"
-            android:exported="false" />
+            android:name=".NuevoEditarReporteUsoActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DetalleEmpleadoActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".EditarPedidoActivity"
-            android:exported="false" />
+            android:name=".NuevoEditarEmpleadoActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NuevoEditarPedidoActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DetallePedidoActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EstadisticasActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".NuevoVehiculoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditarVehiculoActivity"
-            android:exported="false" />
+            android:name=".NuevoEditarVehiculoActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DetalleVehiculoActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:screenOrientation="locked" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:screenOrientation="locked">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,5 +62,8 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
 
 </manifest>

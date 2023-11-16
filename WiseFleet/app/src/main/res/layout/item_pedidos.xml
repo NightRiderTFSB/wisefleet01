@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="370dp"
-    android:layout_height="120dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="10dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="5dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -21,53 +20,45 @@
 
 
         <TextView
-            android:id="@+id/txtNombrePedido"
+            android:id="@+id/txtANombreDe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Pizza jumbo" />
+            tools:text="Pedido de juan Olmos" />
 
         <TextView
-            android:id="@+id/txtDireccionPedido"
+            android:id="@+id/txtDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
+            android:layout_below="@+id/txtANombreDe"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="José Herrera 404, Santa Rita." />
+            tools:text="Pizza jumbo de triple carne." />
 
         <TextView
-            android:id="@+id/txtTotalPedido"
+            android:id="@+id/txtTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
+            android:layout_below="@+id/txtDescripcion"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
             tools:text="Total: $130 " />
-    </LinearLayout>
+
+    </RelativeLayout>
 
 
 

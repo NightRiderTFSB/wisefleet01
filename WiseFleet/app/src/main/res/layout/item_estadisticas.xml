@@ -1,89 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="370dp"
-    android:layout_height="120dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="10dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="5dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         >
 
-
         <TextView
-            android:id="@+id/txtFechaa"
+            android:id="@+id/txtLongitud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:paddingLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            tools:text="Longitud: 2.17403" />
+
+        <TextView
+            android:id="@+id/txtLatitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtLongitud"
+            android:layout_marginTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Fecha: 23/03/2023" />
+            tools:text="Latitud: 41.40338" />
 
         <TextView
             android:id="@+id/txtTemperatura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtLatitud"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Temperatura: 105°" />
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            tools:text="Temperatura: 145°" />
 
-        <TextView
-            android:id="@+id/txtUbicacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Ubicación: 41.40338, 2.17403" />
-
-        <TextView
-            android:id="@+id/txtBateria"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Batería: 83%" />
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
